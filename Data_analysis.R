@@ -15,8 +15,8 @@ library(arepa)
 within_km <- 300
 
 
-load('~/Dropbox/ARP/Georgia_bipartite/pp_data.Rdata')
-source('~/Github/Bipartite_Interference/BipartiteGroupIPW_function.R')
+load('~/Dropbox/ARP/Projects/Bipartite_Interference_Paper/Bipartite_IPW/pp_data.Rdata')
+
 
 # Cluster propensity score based on interventional units.
 
