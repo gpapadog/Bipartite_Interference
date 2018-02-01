@@ -16,7 +16,8 @@ within_km <- 300
 
 
 load('~/Dropbox/ARP/Projects/Bipartite_Interference_Paper/Bipartite_IPW/pp_data.Rdata')
-
+source('~/Github/Bipartite_Interference/cluster_pp_function.R')
+source('~/Github/Bipartite_Interference/cluster_plot_function.R')
 
 # Cluster propensity score based on interventional units.
 
@@ -48,6 +49,12 @@ for (zz in 1 : n_zip) {
   zip_dta$long[zz] <- runif(1, long_range[1], long_range[2])
   zip_dta$lat[zz] <- runif(1, lat_range[1], lat_range[2])
 }
+
+
+# using Christine's function to get the neighborhood instead of using the one
+# I generated.
+
+
 
 setorder(zip_dta, 'neigh')
 
