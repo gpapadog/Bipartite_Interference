@@ -1,6 +1,8 @@
-cluster_pp <- function(cluster_id = 1, buffer_meters = 10000) {
+#' @param pp_data Data including power plants. Must include columns 'cluster'
+#' for cluster id, and 'Fac.Longitude', 'Fac.Latitude' for coordinates.
+cluster_pp <- function(pp_data, cluster_id = 1, buffer_meters = 10000) {
   
-  cl <- pp_cluster[cluster == cluster_id][, cluster := NULL]
+  cl <- pp_data[cluster == cluster_id][, cluster := NULL]
   
   ##----- Calculate the convex hull of the cluster
   
@@ -51,7 +53,7 @@ cluster_pp <- function(cluster_id = 1, buffer_meters = 10000) {
   proj4string(linked_zip_coords) <- CRS("+init=epsg:4269")  # default CRS NAG83
   linked_zip_coords <- spTransform(linked_zip_coords, CRS(pj))
   
-  coordinates(ch_coords) = ~Fac.Longitude + Fac.Latitude
+  coordinates(ch_coords) = ~ Fac.Longitude + Fac.Latitude
   proj4string(ch_coords) <- CRS("+init=epsg:4269")  # default CRS NAG83
   ch_coords <- spTransform(ch_coords, CRS(pj))
   
