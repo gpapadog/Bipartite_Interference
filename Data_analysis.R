@@ -13,9 +13,13 @@ library(ggplot2)
 library(arepa)
 
 within_km <- 300
+buffer_meters <- 100000
 
 
 load('~/Dropbox/ARP/Projects/Bipartite_Interference_Paper/Bipartite_IPW/pp_data.Rdata')
+link_pp_dta <- pp_dta[, c('Fac.Longitude', 'Fac.Latitude', 'neigh')]
+setnames(link_pp_dta, 'neigh', 'cluster')
+
 source('~/Github/Bipartite_Interference/cluster_pp_function.R')
 source('~/Github/Bipartite_Interference/cluster_plot_function.R')
 
@@ -41,19 +45,17 @@ zip_dta <- data.table(neigh = sample(1 : n_neigh, n_zip, replace = TRUE),
                       value = rnorm(n_zip), long = NA, lat = NA,
                       closest_int = NA)
 
-# Generating locations near the power plants in the same cluster.
-for (zz in 1 : n_zip) {
-  neigh_zz <- zip_dta$neigh[zz]
-  long_range <- range(subset(pp_dta, neigh == neigh_zz)$Fac.Longitude)
-  lat_range <- range(subset(pp_dta, neigh == neigh_zz)$Fac.Latitude)
-  zip_dta$long[zz] <- runif(1, long_range[1], long_range[2])
-  zip_dta$lat[zz] <- runif(1, lat_range[1], lat_range[2])
+zip_dta <- data.table(neigh = numeric(0), long = numeric(0), lat = numeric(0),
+                      zipcode = character(0))
+# using Christine's function to get the zipcodes within each neighborhood
+# instead of generating them.
+for (nn in 1 : n_neigh) {
+  l <- cluster_pp(pp_data = link_pp_dta, cluster_id = nn,
+                  buffer_meters = buffer_meters)
+  zip_dta <- rbind(zip_dta, cbind(neigh = nn, long = l$linked_zip$longitude,
+                                  lat = l$linked_zip$latitude,
+                                  zipcode = l$linked_zip$zip))
 }
-
-
-# using Christine's function to get the neighborhood instead of using the one
-# I generated.
-
 
 
 setorder(zip_dta, 'neigh')
