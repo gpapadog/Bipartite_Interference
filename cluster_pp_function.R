@@ -42,7 +42,7 @@ cluster_pp <- function(pp_data, cluster_id = 1, buffer_meters = 10000) {
   
   ##----- Calculate the spatial overlay between the buffered convex hull and the zip code centroids
   
-  o <- over(cluster_poly, z, TRUE)
+  o <- over(cluster_buffer, z, TRUE)
   
   ##----- Merge back to get back ZIP code information
   
