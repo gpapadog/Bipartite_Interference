@@ -4,6 +4,7 @@
 ## DONE: better projection
 
 ##----- Load libraries
+setwd('~/Github/Bipartite_Interference/')
 
 library(data.table)
 library(sp)
@@ -26,7 +27,8 @@ source('~/Github/Bipartite_Interference/cluster_plot_function.R')
 ##----- Example
 
 # link cluster ID 20, buffer 10km
-l <- cluster_pp(pp_data = pp_dta, cluster_id = 1, buffer_meters = 10000)
+l <- cluster_pp(pp_data = pp_dta, cluster_id = 29, buffer_meters = 3000)
 head(l$linked_zip)
+l$cl
 cluster_plot(l)
 
