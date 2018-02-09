@@ -2,7 +2,7 @@
 library(ggplot2)
 library(gridExtra)
 
-load('~/Dropbox/ARP/Projects/Bipartite_Interference_Paper/Bipartite_IPW/results1.dat')
+load('~/Dropbox/ARP/Projects/Bipartite_Interference_Paper/Bipartite_IPW/results2.dat')
 attach(res)
 
 
