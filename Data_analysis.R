@@ -1,6 +1,3 @@
-# Potential changes:
-# - We might want to allow for covariates of the zip codes to play a role in ps.
-
 library(rgdal)
 library(raster)
 library(proj4)
@@ -11,12 +8,13 @@ library(gplots)
 library(gridExtra)
 library(ggplot2)
 library(arepa)
+library(rgeos)
 
 within_km <- 300
 buffer_meters <- 10000
 
-
-load('~/Dropbox/ARP/Projects/Bipartite_Interference_Paper/Bipartite_IPW/pp_data.Rdata')
+load_path <- '~/Dropbox/ARP/Projects/Bipartite_Interference_Paper/Bipartite_IPW/'
+load(paste0(load_path, 'pp_data_all_clusters.Rdata'))
 link_pp_dta <- pp_dta[, c('Fac.Longitude', 'Fac.Latitude', 'neigh')]
 setnames(link_pp_dta, 'neigh', 'cluster')
 n_neigh <- max(pp_dta$neigh)

@@ -19,9 +19,11 @@ library(RColorBrewer)
 library(ggmap)
 
 
-load('~/Dropbox/ARP/Projects/Bipartite_Interference_Paper/Bipartite_IPW/pp_data.Rdata')
+load('~/Dropbox/ARP/Projects/Bipartite_Interference_Paper/Bipartite_IPW/pp_data_all_clusters.Rdata')
 load('~/Dropbox/ARP/Projects/Bipartite_Interference_Paper/Bipartite_IPW/zip_dta_complete_coords.Rdata')
-setnames(zip_dta_complete_coords, 'neigh', 'cluster')
+if ('neigh' %in% names(zip_dta_complete_coords)) {
+  setnames(zip_dta_complete_coords, 'neigh', 'cluster')
+}
 
 us.dat <- map_data("state")
 
@@ -70,12 +72,6 @@ ggplot() +
         legend.text = element_text(size = 17)) +
   xlab('') + ylab('') +
   guides(shape = guide_legend(title = ""))
-
-
-
-
-
-
 
 
 
