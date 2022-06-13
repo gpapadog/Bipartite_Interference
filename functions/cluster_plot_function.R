@@ -1,7 +1,7 @@
 
 ##----- Interactive visualization with leaflet
 
-cluster_plot <- function(l) {
+cluster_plot <- function(l, icon_path = NULL) {
   
   # https://stackoverflow.com/questions/33045388/projecting-my-shapefile-data-on-leaflet-map-using-r
   
@@ -14,7 +14,7 @@ cluster_plot <- function(l) {
   shiny_cl <- spTransform(l$cl, CRS("+proj=longlat +ellps=GRS80"))
   
   ppIcon <- iconList(
-    pp = makeIcon("pp.png", 36, 36)
+    pp = makeIcon(paste0(icon_path, "pp.png"), iconWidth = 36, iconHeight = 36)
   )
   
   cluster_centroid <- gCentroid(shiny_cluster_buffer) # get buffer centroid to center map display
