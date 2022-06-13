@@ -25,5 +25,7 @@ Functions for linking power plants to zip codes, and for plotting clusters
 <img src="images/cluster_plot.png" alt="drawing" width="500"/>
 
 
-- alhsd
+- ```plot_of_clusters.R```: It shows the map of the US with the clusters and corresponding buffer zones:
+ <img src="images/all_clusters.png" alt="drawing" width="500"/>
+
 
