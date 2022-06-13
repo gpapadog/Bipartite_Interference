@@ -22,10 +22,14 @@ Functions for linking power plants to zip codes, and for plotting clusters
 *R code*
 
 - ```link_conv_hull.R```: It creates a visualization of one of the clusters. It shows the zip code centroids as cirlces, and uses an icon for the power plants. The result should look like this:
-<img src="images/cluster_plot.png" alt="drawing" width="500"/>
+<img src="images/cluster_plot.png" alt="drawing" width="350"/>
 
 
 - ```plot_of_clusters.R```: It shows the map of the US with the clusters and corresponding buffer zones:
- <img src="images/all_clusters.png" alt="drawing" width="500"/>
+ <img src="images/all_clusters.png" alt="drawing" width="350"/>
+
+- ```Data_analysis.R```: Analyzing the power plant data with a randomly generated outcome. It requires the ```arepa``` R package () for spatial linkage of power plants and zip codes. If this R package is having issues, a similar analysis with randomly generated clusters is available at the next script.
+
+- 
 
 
