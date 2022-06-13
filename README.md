@@ -7,7 +7,11 @@ APA
 
 The code here is to illustrate how the IPW estimator can be used for bipartite data. The code replicates part of the analysis. The power plant data are available, but since the outcome data correspond to Medicare data which we cannot make pubic, we simply generate a fake outcome which we analyze.
 
-The analysis requires the R package ```Interference``` available at: https://github.com/gpapadog/Interference
+## Requirements
+
+- The analysis requires the R package ```Interference``` available at: https://github.com/gpapadog/Interference
+
+- It also requires the ```arepa``` R package (https://github.com/czigler/arepa) for spatial linkage of power plants and zip codes. If there are issues with installing the ```arepa``` R package, the user could source the ```spatial_link_index``` function available in the package's script: https://github.com/czigler/arepa/blob/master/R/arepa.R
 
 ## Summary of files and their functionality
 
@@ -21,7 +25,7 @@ Functions for linking power plants to zip codes, and for plotting clusters
 
 *R code*
 
-- ```Data_analysis.R```: Analyzing the power plant data with a randomly generated outcome. It requires the ```arepa``` R package (https://github.com/czigler/arepa) for spatial linkage of power plants and zip codes. 
+- ```Data_analysis.R```: Analyzing the power plant data with a randomly generated outcome.
 
 - ```link_conv_hull.R```: It creates a visualization of one of the clusters. It shows the zip code centroids as cirlces, and uses an icon for the power plants. The result should look like this:
 <img src="images/cluster_plot.png" alt="drawing" width="350"/>
