@@ -11,14 +11,17 @@ The analysis requires the R package ```Interference``` available at: https://git
 
 ## Summary of files and their functionality
 
-- Data/
+*Data/*
 
 It includes power plant data and zip code data. The power plant data include the treatment indicator, information on the power plant such as its size and operation characteristics, and information on the population residing in the area near the power plant. The zip code data include zip code coordinate information, the cluster they belong to, and the index of the closest power plant.
 
-- functions/
+*functions/*
 
 Functions for linking power plants to zip codes, and for plotting clusters
 
-- R code
--- df;l
---
+*R code*
+
+- df;l
+
+- alhsd
+
