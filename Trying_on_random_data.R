@@ -1,6 +1,8 @@
+# Code that does not use the arepa R package to perform spatial linkage.
+# The clusters are randomly generated instead.
+
 library(Interference)
 library(data.table)
-library(arepa)
 library(lme4)
 library(ggplot2)
 library(gridExtra)
@@ -15,7 +17,7 @@ pp_dta <- data.table(Fac.Longitude = runif(n_pp, 0, 1),
                      A = sample(c(0, 1), n_pp, replace = TRUE),
                      id = as.character(1 : n_pp),
                      C1 = rnorm(n_pp), C2 = rnorm(n_pp))
-plot(pp_dta$Long, pp_dta$Lat)
+plot(pp_dta$Fac.Longitude, pp_dta$Fac.Latitude)
 
 d <- as.dist(fields::rdist(pp_dta[, c('Fac.Longitude', 'Fac.Latitude'),
                                   with = FALSE]))
