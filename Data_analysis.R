@@ -10,6 +10,7 @@ library(ggplot2)
 library(arepa)
 library(rgeos)
 
+set.seed(1234)
 
 # ----------- Specify
 within_km <- 300
