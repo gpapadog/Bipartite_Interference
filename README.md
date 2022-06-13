@@ -8,3 +8,11 @@ APA
 The code here is to illustrate how the IPW estimator can be used for bipartite data. The code replicates part of the analysis. The power plant data are available, but since the outcome data correspond to Medicare data which we cannot make pubic, we simply generate a fake outcome which we analyze.
 
 The analysis requires the R package ```Interference``` available at: https://github.com/gpapadog/Interference
+
+## Summary of files and their functionality
+
+- Data/ folder
+
+It includes power plant data and zip code data. The power plant data include the treatment indicator, information on the power plant such as its size and operation characteristics, and information on the population residing in the area near the power plant. The zip code data include zip code coordinate information, the cluster they belong to, and the index of the closest power plant.
+
+- functions/
