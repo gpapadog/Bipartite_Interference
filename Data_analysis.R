@@ -10,21 +10,24 @@ library(ggplot2)
 library(arepa)
 library(rgeos)
 
+
+# ----------- Specify
 within_km <- 300
 buffer_meters <- 10000
+load_path <- '~/Github/Bipartite_Interference/Data/'
+source_path <- '~/Github/Bipartite_Interference/functions/'
+# ---------------------------- 
 
-load_path <- '~/Dropbox/ARP/Projects/Bipartite_Interference_Paper/Bipartite_IPW/'
+
 load(paste0(load_path, 'pp_data_all_clusters.Rdata'))
 link_pp_dta <- pp_dta[, c('Fac.Longitude', 'Fac.Latitude', 'neigh')]
 setnames(link_pp_dta, 'neigh', 'cluster')
 n_neigh <- max(pp_dta$neigh)
 
+source(paste0(source_path, 'cluster_pp_function.R'))
 
-source('~/Github/Bipartite_Interference/cluster_pp_function.R')
-source('~/Github/Bipartite_Interference/cluster_plot_function.R')
 
 # Cluster propensity score based on interventional units.
-
 cov_cols <- 5 : 22
 cov_names <- names(pp_dta)[cov_cols]
 glm_form <- paste('Trt ~ (1 | neigh) +', paste(cov_names, collapse = ' + '))
@@ -41,8 +44,8 @@ phi_hat <- list(coefs = summary(glmod)$coef[, 1],
 
 zip_dta <- data.table(neigh = numeric(0), long = numeric(0), lat = numeric(0),
                       zipcode = character(0))
-# using Christine's function to get the zipcodes within each neighborhood
-# instead of generating them.
+# using Christine Choirat's function to get the zipcodes within each
+# neighborhood of a cluster.
 for (nn in 1 : n_neigh) {
   l <- cluster_pp(pp_data = link_pp_dta, cluster_id = nn,
                   buffer_meters = buffer_meters)

@@ -19,11 +19,9 @@ library(RColorBrewer)
 library(ggmap)
 
 
-load('~/Dropbox/ARP/Projects/Bipartite_Interference_Paper/Bipartite_IPW/pp_data_all_clusters.Rdata')
-load('~/Dropbox/ARP/Projects/Bipartite_Interference_Paper/Bipartite_IPW/zip_dta_complete_coords.Rdata')
-if ('neigh' %in% names(zip_dta_complete_coords)) {
-  setnames(zip_dta_complete_coords, 'neigh', 'cluster')
-}
+load('~/Github/Bipartite_Interference/Data/pp_data_all_clusters.Rdata')
+load('~/Github/Bipartite_Interference/Data/zip_dta.Rdata')
+setnames(zip_dta, 'neigh', 'cluster')
 
 us.dat <- map_data("state")
 
@@ -44,7 +42,7 @@ hulls <- ddply(df, "cluster", function(x) find_hull(x, long_col = 2, lat_col = 1
 
 
 # Zip code data.
-zipp <- as.data.frame(zip_dta_complete_coords)
+zipp <- as.data.frame(zip_dta)
 zipp$cluster <- as.factor(zipp$cluster)
 zipp_hulls <- ddply(zipp, "cluster", function(x) find_hull(x, long_col = 2, lat_col = 3))
 

@@ -14,15 +14,17 @@ library(rgeos)
 library(zipcode)
 library(leaflet)
 
+load_path <- '~/Github/Bipartite_Interference/Data/'
+
 ##----- Load dataset
 
-load("~/Dropbox/ARP/Projects/Bipartite_Interference_Paper/Bipartite_IPW/pp_data.Rdata")
+load(paste0(load_path, 'pp_data_all_clusters.Rdata'))
 pp_dta <- pp_dta[, c('Fac.Longitude', 'Fac.Latitude', 'neigh')]
 setnames(pp_dta, 'neigh', 'cluster')
 # write.csv(pp_cluster, "pp_cluster.csv")
 
-source('~/Github/Bipartite_Interference/cluster_pp_function.R')
-source('~/Github/Bipartite_Interference/cluster_plot_function.R')
+source('~/Github/Bipartite_Interference/functions/cluster_pp_function.R')
+source('~/Github/Bipartite_Interference/functions/cluster_plot_function.R')
 
 ##----- Example
 
