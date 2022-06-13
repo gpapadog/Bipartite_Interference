@@ -18,9 +18,10 @@ library(plyr)
 library(RColorBrewer)
 library(ggmap)
 
+load_path <- '~/Github/Bipartite_Interference/Data/'
 
-load('~/Github/Bipartite_Interference/Data/pp_data_all_clusters.Rdata')
-load('~/Github/Bipartite_Interference/Data/zip_dta.Rdata')
+load(paste0(load_path, 'pp_data_all_clusters.Rdata'))
+load(paste0(load_path, 'zip_dta.Rdata'))
 setnames(zip_dta, 'neigh', 'cluster')
 
 us.dat <- map_data("state")
