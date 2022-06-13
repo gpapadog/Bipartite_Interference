@@ -22,8 +22,7 @@ Functions for linking power plants to zip codes, and for plotting clusters
 *R code*
 
 - ```link_conv_hull.R```: It creates a visualization of one of the clusters. It shows the zip code centroids as cirlces, and uses an icon for the power plants. The result should look like this:
-
-<img src="images/cluster_plot.png" alt="drawing" width="200"/>
+<img src="images/cluster_plot.png" alt="drawing" width="500"/>
 
 
 - alhsd
