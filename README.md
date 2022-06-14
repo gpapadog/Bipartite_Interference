@@ -11,7 +11,7 @@ The code here is to illustrate how the IPW estimator can be used for bipartite d
 
 - The analysis requires the R package ```Interference``` available at: https://github.com/gpapadog/Interference
 
-- It also requires the ```arepa``` R package (https://github.com/czigler/arepa) for spatial linkage of power plants and zip codes. If there are issues with installing the ```arepa``` R package, the user could source the ```spatial_link_index``` function available in the package's script: https://github.com/czigler/arepa/blob/master/R/arepa.R
+- A necessary function (```spatial_link_index```) has been incorporated in this repository from the ```arepa``` R package which is available at https://github.com/czigler/arepa.
 
 ## Summary of files and their functionality
 
