@@ -7,8 +7,8 @@ library(data.table)
 library(gplots)
 library(gridExtra)
 library(ggplot2)
-library(arepa)
 library(rgeos)
+library(zipcode)
 
 set.seed(1234)
 
@@ -26,6 +26,8 @@ setnames(link_pp_dta, 'neigh', 'cluster')
 n_neigh <- max(pp_dta$neigh)
 
 source(paste0(source_path, 'cluster_pp_function.R'))
+source(paste0(source_path, 'spatial_link_index_function.R'))
+
 
 
 # Cluster propensity score based on interventional units.
@@ -93,15 +95,18 @@ alpha <- seq(alpha_range[1], alpha_range[2], length.out = 40)
 trt_col <- which(names(pp_dta) == 'Trt')
 out_col <- which(names(zip_dta) == 'value')
 
-
+# Calculating the IPW estimator for each cluster:
 yhat_group <- BipartiteGroupIPW(int_dta = pp_dta, out_dta = zip_dta, 
                                 cov_cols = cov_cols, phi_hat = phi_hat,
                                 alpha = alpha, trt_col = trt_col,
                                 out_col = out_col)
 
+# Calculating the score functions which are used for the confidence intervals
 scores <- CalcScore(dta = pp_dta, neigh_ind = NULL, phi_hat = phi_hat,
                     cov_cols = cov_cols, trt_name = 'Trt')
 
+# Getting the estimates of the population average causal effect and covariance
+# matrix
 ypop <- Ypop(ygroup = yhat_group, ps = 'estimated', scores = scores,
              dta = pp_dta)
 
